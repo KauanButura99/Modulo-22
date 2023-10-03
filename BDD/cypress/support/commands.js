@@ -1,9 +1,8 @@
 /// <reference types="cypress" />
 
-const { cookie } = require("server/reply")
-
 Cypress.Commands.add('login', (user, pass) => {
   const fd = new FormData()
+
   fd.append('log', user)
   fd.append('pwd', pass)
   fd.append('wp-submit', "Acessar")
