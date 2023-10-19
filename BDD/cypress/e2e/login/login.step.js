@@ -7,7 +7,7 @@ Given('I visit EBAC Store', () => {
   cy.visit('/')
 })
 
-When('I log in with user {string} and pass {string}', (user, pass) => {
+When(/^I log in with user (.+) and pass (.+)$/, (user, pass) => {
   cy.login(user, pass)
 })
 

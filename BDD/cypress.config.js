@@ -15,8 +15,7 @@ module.exports = defineConfig({
   e2e: {
     baseUrl: 'http://lojaebac.ebaconline.art.br/',
     specPattern: "cypress/e2e/*.feature",
-    supportFile: false,
-    setupNodeEvents,
+    setupNodeEvents
   },
 });
 
