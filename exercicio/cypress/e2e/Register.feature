@@ -1,5 +1,5 @@
 Feature: Register a account
   Scenario: Access Minha-Conta Page
-    Given I visit EBAC Store
-    When reigster a email and password
-    Then must Olá be visible
+    Given I visit EBAC Store in "/minha-conta" page
+    When Reigister a email and password
+    Then "Olá" must be visible
