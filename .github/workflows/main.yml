@@ -1,34 +1,33 @@
-name: EBAC CI
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: webdriverio-ci
 
 on:
   push:
-    branches: [ exercicio-modulo23]
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   test:
-    # The type of runner that the job will run on
+
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 20
-    - name: Cypress run
-      uses: cypress-io/github-action@v6
-      continue-on-error: true
-      with:
-        install-command: npm install
-        browser: chrome
-    - name: Publish Report
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: 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
+        - name: Checkout
+          uses: actions/checkout@v2
+        - uses: actions/setup-node@v1
+          with:
+            node-version: 16.3.0
+        - name: Install
+          run: npm install
+        - name: Test
+          run: BROWSERSTACK_USERNAME=${{secrets.BROWSERSTACK_USERNAME}} BROWSERSTACK_ACCESS_KEY=${{secrets.BROWSERSTACK_ACCESS_KEY}} npm run test
+        - uses: actions/upload-artifact@v1
+          if: failure()
+          with:
+            name: logs
+            path: logs
 
       
