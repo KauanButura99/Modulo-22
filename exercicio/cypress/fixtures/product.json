@@ -1,0 +1,20 @@
+[  {
+        "product":"Ingrid Running janket",
+        "size":"XS",
+        "color": "Red",
+        "amount":"1"
+   },
+   {
+       "product":"Josie Yoga Jacket",
+        "size":"S",
+        "color": "Black",
+        "amount":"2"
+   },
+   {
+        "product":"Circe Hooded Ice Fleece",
+        "size":"L",
+        "color": "Purple",
+        "amount":"5"
+   }
+   
+]
